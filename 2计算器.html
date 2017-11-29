@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			input[type="text"],select{
+				width: 200px;
+				height: 30px;
+				margin: 5px 0;
+				text-indent: 10px;
+				padding: 0;
+				border: 1px solid #bbb;
+				font-size:15px;
+				border-radius: 8px;
+				outline: none;
+			}
+			#computed{
+				height: 30px;
+				font-size: 18px;
+				width: 200px;
+				margin: 5px 0;
+				border:none;
+				border-radius: 8px;
+				background: #eee;
+				color: deepskyblue
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="first" value="" placeholder=" 请输入第一个数" autofocus/><br />
+		<select name="">
+			<option >选择算法</option>
+			<option value="+" id="add">+</option>
+			<option value="-" id="min">-</option>
+			<option value="×" id="multi">×</option>
+			<option value="÷" id="into">÷</option>
+		</select>
+		<br />
+		<input type="text" id="second" value="" placeholder=" 请输入第二个数"/><br />
+		<input type="button" value="计算" id="computed"/>
+		<br />
+		<!--<input type="button"id="add" value="+" /><input type="button" id="min" value="-" /><input type="button" id="multi" value="×" /><input type="button" id="into" value="÷" /><br />-->
+		<input type="text" id="result" value="" />
+	</body>
+	<script type="text/javascript">
+		var first=document.getElementById("first");
+		var second=document.getElementById("second");
+		var result=document.getElementById("result");
+		
+		var add=document.getElementById("add");//加
+		var min=document.getElementById("min");//减
+		var multi=document.getElementById("multi");//乘
+		var into=document.getElementById("into");//除
+		var computed=document.getElementById("computed")//计算
+		
+			computed.onclick = function(){
+				if(first.value.length==0||second.value.length==0){
+					alert("不能为空!")
+				}else{
+					f=Number(first.value);
+					s=Number(second.value);
+					if(Number.isNaN(f)||Number.isNaN(s)){
+						alert("输入错误!请重新输入");
+						first.value=null;
+						second.value=null;
+						result.value=null;
+					}else if(add.selected){
+						result.value=f+s;
+					}else if(min.selected){
+						result.value=f-s;
+					}else if(multi.selected){
+						result.value=f*s;
+					}else if(into.selected){
+						if(s===0){
+							alert("除数不能为零！")
+						}else{
+							result.value=f/s;
+						}
+					}
+				}
+			}
+		
+
+	</script>
+</html>
